@@ -1,3 +1,4 @@
+import { ProductService } from "./../product.service";
 import { Component, OnInit, Input } from "@angular/core";
 import { Product } from "./../product.interface";
 
