@@ -6,6 +6,7 @@
   <li
     *ngFor="let product of products"
     [class.discontinued]="product.discontinued"
+    (click)="onSelect(product)"
   >
     <span class="name"> {{ product.name | uppercase }}</span>
     <span class="description"> {{ product.description }}</span>
@@ -14,3 +15,5 @@
     >
   </li>
 </ul>
+
+<app-product-detail [product]="selectedProduct"></app-product-detail>

@@ -9,6 +9,12 @@ import { Component, OnInit } from "@angular/core";
 export class ProductListComponent implements OnInit {
   title: string = "Products";
   products: Product[];
+  selectedProduct: Product;
+
+  onSelect(product: Product) {
+    console.log(product);
+    this.selectedProduct = product;
+  }
 
   constructor() {
     this.products = [
