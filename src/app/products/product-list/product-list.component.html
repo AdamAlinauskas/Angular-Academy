@@ -2,7 +2,7 @@
   {{ title }}
 </h2>
 
-<ul class="products">
+<ul class="products" *ngIf="products$ | async as products">
   <li
     *ngFor="let product of products"
     [class.discontinued]="product.discontinued"
