@@ -8,7 +8,22 @@
   />
   <h3>{{ product.description }}</h3>
   <p>Price: {{ product.price | currency: "CAD":"symbol-narrow":".2" }}</p>
-  <p>Fixed price? {{ product.fixedPrice }}</p>
-  <p>Discontinued? {{ product.discontinued }}</p>
+  <p>
+    Edit price:
+    <input
+      [(ngModel)]="product.price"
+      type="number"
+      [disabled]="product.fixedPrice"
+    />
+  </p>
+  <p>
+    Fixed price? {{ product.fixedPrice }}
+    <input type="checkbox" [(ngModel)]="product.discontinued" />
+  </p>
+  <p>
+    Discontinued?
+    {{ product.discontinued }}
+    <input type="checkbox" [(ngModel)]="product.discontinued" />
+  </p>
   <p>Modified date: {{ product.modifiedDate | date }}</p>
 </div>
