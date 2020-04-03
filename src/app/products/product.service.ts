@@ -5,7 +5,7 @@ import { Observable, throwError } from "rxjs";
 import { catchError, delay, shareReplay, tap, map } from "rxjs/operators";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ProductService {
   private baseUrl = "https://storerestservice.azurewebsites.net/api/products/";
@@ -36,6 +36,11 @@ export class ProductService {
     // await new Promise(x => setTimeout(x, 1000));
     this.products$ = this.http
       .get<Product[]>(this.baseUrl)
-      .pipe(delay(0), tap(console.table), catchError(this.handleError));
+      .pipe(
+        delay(0),
+        tap(console.table),
+        shareReplay(),
+        catchError(this.handleError)
+      );
   }
 }
