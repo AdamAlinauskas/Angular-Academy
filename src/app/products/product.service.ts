@@ -15,6 +15,10 @@ export class ProductService {
     this.initProducts();
   }
 
+  insertProduct(newProduct: Product): Observable<Product> {
+    return this.http.post<Product>(this.baseUrl, newProduct);
+  }
+
   private handleError(error: HttpErrorResponse) {
     // in a real world app, you may send the error to the server using some remote logging infrastructure
     // instead of just logging it to the console
@@ -34,7 +38,8 @@ export class ProductService {
 
   async initProducts() {
     // await new Promise(x => setTimeout(x, 1000));
-    this.products$ = this.http.get<Product[]>(this.baseUrl).pipe(
+    let url: string = this.baseUrl + `?$orderby=ModifiedDate%20desc`;
+    this.products$ = this.http.get<Product[]>(url).pipe(
       delay(0),
       // tap(console.table),
       shareReplay(),
