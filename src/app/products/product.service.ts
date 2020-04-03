@@ -34,13 +34,11 @@ export class ProductService {
 
   async initProducts() {
     // await new Promise(x => setTimeout(x, 1000));
-    this.products$ = this.http
-      .get<Product[]>(this.baseUrl)
-      .pipe(
-        delay(0),
-        tap(console.table),
-        shareReplay(),
-        catchError(this.handleError)
-      );
+    this.products$ = this.http.get<Product[]>(this.baseUrl).pipe(
+      delay(0),
+      // tap(console.table),
+      shareReplay(),
+      catchError(this.handleError)
+    );
   }
 }

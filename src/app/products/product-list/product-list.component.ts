@@ -3,12 +3,13 @@ import { ProductService } from "./../product.service";
 import { Product } from "./../product.interface";
 import { Component, OnInit } from "@angular/core";
 import { catchError } from "rxjs/operators";
+import { Router } from "@angular/router";
 // import { catchError, delay, shareReplay, tap, map } from "rxjs/operators";
 
 @Component({
   selector: "app-product-list",
   templateUrl: "./product-list.component.html",
-  styleUrls: ["./product-list.component.css"]
+  styleUrls: ["./product-list.component.css"],
 })
 export class ProductListComponent implements OnInit {
   title: string = "Products";
@@ -38,15 +39,16 @@ export class ProductListComponent implements OnInit {
   }
 
   onSelect(product: Product) {
-    console.log(product);
+    //console.log(product);
     this.selectedProduct = product;
+    this.router.navigateByUrl("/products/" + product.id);
   }
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
     this.products$ = this.productService.products$.pipe(
-      catchError(error => {
+      catchError((error) => {
         this.errorMessage = error;
         return EMPTY;
       })

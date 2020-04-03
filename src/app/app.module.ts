@@ -1,5 +1,4 @@
 import { SharedModule } from "./shared/shared.module";
-import { ProductsModule } from "./products/products.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
@@ -14,7 +13,6 @@ import { AppComponent } from "./app.component";
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    ProductsModule,
     SharedModule,
     AppRoutingModule,
   ],

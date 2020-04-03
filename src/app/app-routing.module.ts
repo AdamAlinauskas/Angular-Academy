@@ -10,11 +10,17 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "contact", component: ContactComponent },
   { path: "admin", component: AdminComponent },
-  { path: "**", component: ErrorComponent }
+  {
+    path: "products",
+    loadChildren: () =>
+      import("./products/products.module").then((m) => m.ProductsModule),
+  },
+
+  { path: "**", component: ErrorComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
