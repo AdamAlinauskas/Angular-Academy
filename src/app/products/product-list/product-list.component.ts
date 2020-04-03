@@ -27,12 +27,14 @@ export class ProductListComponent implements OnInit {
     this.start += this.pageSize;
     this.end += this.pageSize;
     this.currentPage++;
+    this.selectedProduct = null;
   }
 
   previousPage(): void {
     this.start -= this.pageSize;
     this.end -= this.pageSize;
     this.currentPage--;
+    this.selectedProduct = null;
   }
 
   onSelect(product: Product) {
