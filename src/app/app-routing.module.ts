@@ -1,11 +1,20 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { ContactComponent } from "./shared/contact.component";
+import { ErrorComponent } from "./shared/error.component";
+import { AdminComponent } from "./shared/admin.component";
+import { HomeComponent } from "./shared/home.component";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  { path: "", redirectTo: "/home", pathMatch: "full" },
+  { path: "home", component: HomeComponent },
+  { path: "contact", component: ContactComponent },
+  { path: "admin", component: AdminComponent },
+  { path: "**", component: ErrorComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
